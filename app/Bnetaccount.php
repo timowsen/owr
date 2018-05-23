@@ -10,6 +10,7 @@ class Bnetaccount extends Model
         return $this->belongsTo(User::class);
     }
 
+    
     public static function getbnetAcc($accname = "") {
         
         if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
@@ -36,7 +37,8 @@ class Bnetaccount extends Model
             } else {
                 return false;
             }
-        } return false;
-
+        } else {
+            return false;
+        }
     }
 }
