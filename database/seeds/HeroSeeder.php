@@ -77,7 +77,7 @@ class HeroSeeder extends Seeder
 
         DB::table('heroes')->insert([
             'type' => 2,
-            'name' => 'pharah',
+            'name' => 'Pharah',
             'picture' => 'Icon-pharah.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
