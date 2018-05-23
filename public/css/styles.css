@@ -1,0 +1,49 @@
+body {
+    background-image: url(images/background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+fieldset {
+    border: none;
+}
+
+legend {
+    margin: auto auto auto 28em;
+}
+
+form {
+    display: inline;
+}
+
+p {
+    font-family: Verdana;
+    margin: 2.5em auto auto 28em;
+    color: #29293d;
+}
+
+.button {
+    margin: 0.5em auto auto 50em;
+}
+
+.ui-button:hover {
+    background: #f58400 !important;
+}
+
+.ui-button:focus {
+    border: 1px solid #ffaf0f !important;
+    background-image: linear-gradient(to bottom, #626262 50%, #555555 50%, #696969);
+    border: #f58400;
+    font-weight: bold;
+}
+
+#wrapper {
+    font-family: Verdana;
+    font-weight: bolder;
+    margin: 3.125em auto auto 0em;
+    color: #fff;
+    display: inline;
+}
