@@ -16,11 +16,21 @@ class BattlenetController extends Controller
             'bnetaccount' => 'required'
         ]);
 
+        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
+            $apiurl = env('OW_API_URL', false);
+            $apiport = env('OW_API_PORT', false);
+        } else {
+            $apiurl = 0;
+            $apiport = 0;
+        } 
+
         $options  = array('http' => array('user_agent' => 'timowsen12345'));
         $context = stream_context_create($options);
         $battle =  request('bnetaccount');
-        $url = "http://127.0.0.1:4444/api/v3/u/$battle/blob";
-        $data = @file_get_contents($url, false, $context);
+        if($apiurl != 0 && $apipot != 0) {
+            $url = "http://$apiurl:$apiport/api/v3/u/$battle/blob";
+            $data = @file_get_contents($url, false, $context);
+        }
 
         if(!empty($data)) 
         {
@@ -80,13 +90,25 @@ class BattlenetController extends Controller
     }
 
     public function refresh() 
-    {
+    {   
+
+        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
+            $apiurl = env('OW_API_URL', false);
+            $apiport = env('OW_API_PORT', false);
+        } else {
+            $apiurl = 0;
+            $apiport = 0;
+        } 
+
         $battle = Bnetaccount::select('bnetaccount')->where('user_id', '=', Auth::id())->first();
         $battle = $battle['bnetaccount'];
         $options  = array('http' => array('user_agent' => 'timowsen12345'));
         $context = stream_context_create($options);
-        $url = "http://127.0.0.1:4444/api/v3/u/$battle/blob";
-        $data = @file_get_contents($url, false, $context);
+        if($apiurl !== 0 && $apiport !== 0) {
+            $url = "http://$apiurl:$apiport/api/v3/u/$battle/blob";
+            $data = @file_get_contents($url, false, $context);
+        }
+
 
         if(!empty($data)) 
         {
