@@ -18,7 +18,7 @@
                     </button>
                 </li>
             @endif
-            @if (!empty($heroqpplaytime) && !empty($heroplaytime))
+            @if (!empty($modal['ptime']) && !empty($modal['qptime']))
                 <li class="nav-item ml-1">
                     <button type="button" class="btn btn-playtimecomp" data-toggle="modal" data-target="#bnetstatsModal">
                         Competitive Playtime

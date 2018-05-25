@@ -5,7 +5,7 @@
 			<div class="modal-body">
 				<h1 class="text-center">Quick Play Playtime</h1>
 				<ul class="list-group">
-					{!! $heroqpplaytime !!}
+					{!! $modal['qptime'] !!}
 				</ul>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
@@ -23,7 +23,7 @@
 			<div class="modal-body">
 				<h1 class="text-center">Competitive Playtime</h1>
 				<ul class="list-group">
-					 {!! $heroplaytime !!}
+					 {!! $modal['ptime'] !!}
 				</ul>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>

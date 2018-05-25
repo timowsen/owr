@@ -99,4 +99,112 @@ class Bnetaccount extends Model
             return false;
         }
     }
+
+    public static function playtimeModal($array) {
+
+        if(!empty($array) && is_array($array)) {
+
+        $heroplayed = array();
+        foreach ($array['eu']['heroes']['playtime']['competitive'] as $name => $value) {
+            $heroplayed[$name] = $value;
+        }
+        arsort($heroplayed);
+
+        foreach ($array['eu']['heroes']['stats']['competitive'] as $name => $value) {
+            $herostatscomp[$name] = $value;
+        }
+        arsort($herostatscomp);
+
+
+        $heroplaytime = "";
+        $fullplaytime = 0;
+
+        foreach ($heroplayed as $heroname => $value) {
+            $fullplaytime = $fullplaytime + $value;
+        }
+
+        foreach ($heroplayed as $heroname => $value) {
+            $barlength = $value * 100 / $fullplaytime;
+            if ($value < 1) {
+                $value = 60 * number_format($value, 1) . " Minutes played";
+            } else {
+                $value = number_format($value, 0) . " Hours played";
+            }
+            if	(!empty($herostatscomp[$heroname]['general_stats']['games_won']) && $herostatscomp[$heroname]['general_stats']['games_won'] > 0) {
+                $value .= ' | Win: '.$herostatscomp[$heroname]['general_stats']['games_won'].' ';
+            }
+            if	(!empty($herostatscomp[$heroname]['general_stats']['games_tied']) && $herostatscomp[$heroname]['general_stats']['games_tied'] > 0) {
+                $value .= ' | Draw: '.$herostatscomp[$heroname]['general_stats']['games_tied'].' ';
+            }
+            if	(!empty($herostatscomp[$heroname]['general_stats']['games_lost'])) {
+                $value .= ' | Loss: '.$herostatscomp[$heroname]['general_stats']['games_lost'].' ';
+            }
+
+            if(!empty($herostatscomp[$heroname]['general_stats']['games_won'])) {
+                $winratepartial = $herostatscomp[$heroname]['general_stats']['games_won'];
+            } else {
+                $winratepartial = 0;
+            }
+
+            if(!empty($herostatscomp[$heroname]['general_stats']['games_lost'])) {
+                $lossratepartial = $herostatscomp[$heroname]['general_stats']['games_lost'];
+            } else {
+                $lossratepartial = 0;
+            }
+
+            $winratefull = $winratepartial + $lossratepartial; 
+            
+            $winrate = (!empty($herostatscomp[$heroname]['general_stats']['games_won']) ? ($herostatscomp[$heroname]['general_stats']['games_won'] * 100 / $winratefull) : 0);
+        
+            if ($winrate > 0) {
+                $value .= ' | Winrate: '. number_format($winrate, 2) .'' . '%';
+            }
+
+            $heroplaytime .= '<li class="list-group-item">
+                    <img src="/images/Hero-Icons/Icon-' . $heroname . '.png" alt=' . $heroname . ' class="img-thumbnailtable3">
+                    <p style="font-size:12px;">&nbsp;&nbsp;&nbsp;' . $value . '</p>
+                    <span class="list-group-progress" style="width: ' . $barlength . '%;"></span>
+                </li>';
+        }
+
+        $heroplayedqp = array();
+        foreach ($array['eu']['heroes']['playtime']['quickplay'] as $name => $value) {
+            $heroplayedqp[$name] = $value;
+        }
+        arsort($heroplayedqp);
+
+        $heroqpplaytime = "";
+        $fullplaytimeqp = 0;
+
+        foreach ($heroplayedqp as $heroname => $value) {
+            $fullplaytimeqp = $fullplaytimeqp + $value;
+        }
+
+
+        foreach ($heroplayedqp as $heroname => $value) {
+            $barlength = $value * 100 / $fullplaytimeqp;
+            if ($value < 1) {
+                $value = 60 * number_format($value, 2) . " Minutes played";
+            } else {
+                $value = number_format($value,0) . " Hours played";
+            }
+
+            $heroqpplaytime .= '<li class="list-group-item">
+                    <img src="/images/Hero-Icons/Icon-' . $heroname . '.png" alt=' . $heroname . ' class="img-thumbnailtable3">
+                    &nbsp;&nbsp;&nbsp;' . $value . '
+                    <span class="list-group-progress" style="width: ' . $barlength . '%;"></span>
+                </li>';
+        }
+
+        $playtimemodal['ptime'] = $heroplaytime;
+        $playtimemodal['qptime'] = $heroqpplaytime;
+        
+        return $playtimemodal;
+
+
+    } else {
+        return false;
+    }
+    
+    }
 }

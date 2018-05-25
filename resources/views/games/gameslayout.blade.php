@@ -109,7 +109,7 @@
         @if (!count($bnetaccount))
             @include('api.bnetaddmodal')
         @endif
-        @if (!empty($heroqpplaytime) && !empty($heroplaytime))
+        @if (!empty($modal['ptime']) && !empty($modal['qptime']))
             @include('api.playtimemodal')
         @endif
 
