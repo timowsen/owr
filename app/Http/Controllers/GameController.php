@@ -36,10 +36,16 @@ class GameController extends Controller
 
         $users = User::where('id', '=', Auth::id())->get();
 
-        $apiblob = $bnetaccount->pluck('statscache')->toArray();
+        $apiblob = $bnetaccount->pluck('statscache');
 
-        $array = json_decode($apiblob[0], true);
-
+        if(!empty($apiblob)) {
+            foreach($apiblob as $blob) {
+                $array = json_decode($blob, true);
+            }
+        } else {
+            $array = "";
+        }
+        
         $modal = Bnetaccount::playtimeModal($array);
 
         //Difference in Rating to last game
