@@ -47,7 +47,7 @@ class HeroController extends Controller
             'picture' => request('picture')
         ]);
 
- 
+        
         return redirect('/heroes/create');
 
     }

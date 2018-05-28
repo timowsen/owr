@@ -20,5 +20,7 @@
    
         @yield('timeout')
 
+        @include('datafooter')
+
         @include('footer')
 </html>

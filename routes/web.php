@@ -69,6 +69,11 @@ Route::get('/logout', function(){
     abort(404);
 });
 
+//Footer Routes
+Route::get('/imprint', 'ImprintController@showimprint');
+
+Route::get('/dataprotection', 'ImprintController@showdataprotection');
+
 Route::group(['middleware' => ['web']], function () {
     
 });
