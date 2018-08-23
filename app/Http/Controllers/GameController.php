@@ -30,9 +30,9 @@ class GameController extends Controller
 
         $bnetaccount = Bnetaccount::where('user_id', '=', Auth::id())->get();
 
-        $heroes = Hero::all();
+        $heroes = Hero::orderBy('type')->get();
 
-        $maps = Map::all();
+        $maps = Map::orderBy('type')->get();
 
         $users = User::where('id', '=', Auth::id())->get();
 

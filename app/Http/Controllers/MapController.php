@@ -36,12 +36,15 @@ class MapController extends Controller
             'name' => 'required',
             'picture' => 'required'
         ]);
+        
+        $path = request()->file('picture')->store('/public/images/Map-Icons');
 
+        $filename = @array_pop(explode('/', $path));
 
         Map::create([
             'type' => request('type'),
             'name' => request('name'),
-            'picture' => request('picture')
+            'picture' => "storage/images/Map-Icons/".$filename
         ]);
 
         return redirect('/maps/create');
