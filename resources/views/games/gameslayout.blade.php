@@ -56,14 +56,14 @@
                                 <td>
                                     <div class="row">
                                         @foreach($game->heroes as $hero)
-                                            <div class="col-lg-4 col-sm-4"><img src="/images/Hero-Icons/{{$hero->picture}}" alt="{{ $hero->name }}" class="img-thumbnailtable2 w-100"></div>
+                                            <div class="col-lg-4 col-sm-4"><img src="{{ asset($hero->picture) }}" alt="{{ $hero->name }}" class="img-thumbnailtable2 w-100"></div>
                                         @endforeach
                                     </div>
                                 </td>
                                 <td class="text-center">
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-12">
-                                            <img src="/images/Map-Icons/{{ $game->map->picture }}" alt="{{ $game->map->name }}" class="img-thumbnailtable w-100">
+                                            <img src="{{ asset($game->map->picture) }}" alt="{{ $game->map->name }}" class="img-thumbnailtable w-100">
                                             <strong><p>{{ $game->map->name }}</p></strong>
                                         </div>
                                     </div>
