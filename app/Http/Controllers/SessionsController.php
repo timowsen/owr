@@ -11,9 +11,11 @@ class SessionsController extends Controller
     public function create() {
 
         if(!auth()->attempt(request(['email', 'password']))) {
+            
             return back()->withErrors([
                 'message' => 'Username and/or password doesn´t match'
             ]);
+
         } else {
 
             session()->flash('message', 'Successfully logged in!');

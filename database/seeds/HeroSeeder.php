@@ -11,10 +11,13 @@ class HeroSeeder extends Seeder
      */
     public function run()
     {
+
+
+
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Reinhardt',
-            'picture' => 'Icon-reinhardt.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-reinhardt.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -22,7 +25,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Zarya',
-            'picture' => 'Icon-zarya.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-zarya.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -30,7 +33,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Dva',
-            'picture' => 'Icon-dva.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-dva.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -38,7 +41,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Roadhog',
-            'picture' => 'Icon-roadhog.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-roadhog.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -46,7 +49,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Winston',
-            'picture' => 'Icon-winston.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-winston.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -54,7 +57,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Orisa',
-            'picture' => 'Icon-orisa.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-orisa.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -62,7 +65,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Genji',
-            'picture' => 'Icon-genji.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-genji.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -70,7 +73,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Mccree',
-            'picture' => 'Icon-mccree.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-mccree.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -78,7 +81,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Pharah',
-            'picture' => 'Icon-pharah.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-pharah.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -86,15 +89,15 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Reaper',
-            'picture' => 'Icon-reaper.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-reaper.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
 
         DB::table('heroes')->insert([
             'type' => 2,
-            'name' => 'Soldier 76',
-            'picture' => 'Icon-soldier76.png',
+            'name' => 'Soldier76',
+            'picture' => 'storage/images/Hero-Icons/Icon-soldier76.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -102,7 +105,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Sombra',
-            'picture' => 'Icon-sombra.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-sombra.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -110,7 +113,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Tracer',
-            'picture' => 'Icon-tracer.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-tracer.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -118,7 +121,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Bastion',
-            'picture' => 'Icon-bastion.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-bastion.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -126,7 +129,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Hanzo',
-            'picture' => 'Icon-Hanzo.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-Hanzo.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -134,7 +137,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Junkrat',
-            'picture' => 'Icon-junkrat.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-junkrat.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -142,7 +145,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Widowmaker',
-            'picture' => 'Icon-widowmaker.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-widowmaker.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -150,7 +153,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Doomfist',
-            'picture' => 'Icon-doomfist.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-doomfist.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -159,23 +162,23 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Mei',
-            'picture' => 'Icon-mei.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-mei.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
 
         DB::table('heroes')->insert([
             'type' => 3,
-            'name' => 'Torbjoern',
-            'picture' => 'Icon-torbjorn.png',
+            'name' => 'Torbjorn',
+            'picture' => 'storage/images/Hero-Icons/Icon-torbjorn.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
-
+  
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Ana',
-            'picture' => 'Icon-ana.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-ana.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -183,7 +186,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Mercy',
-            'picture' => 'Icon-mercy.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-mercy.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -191,7 +194,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Lucio',
-            'picture' => 'Icon-lucio.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-lucio.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -199,7 +202,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Symmetra',
-            'picture' => 'Icon-symmetra.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-symmetra.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -207,7 +210,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Zenyatta',
-            'picture' => 'Icon-zenyatta.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-zenyatta.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -215,7 +218,7 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Moira',
-            'picture' => 'Icon-moira.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-moira.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
@@ -223,7 +226,15 @@ class HeroSeeder extends Seeder
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Brigitte',
-            'picture' => 'Icon-brigitte.png',
+            'picture' => 'storage/images/Hero-Icons/Icon-brigitte.png',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
+
+        DB::table('heroes')->insert([
+            'type' => 3,
+            'name' => 'Wrecking_Ball',
+            'picture' => 'storage/images/Hero-Icons/Icon-wrecking_ball.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);

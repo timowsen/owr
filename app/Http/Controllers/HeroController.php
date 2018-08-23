@@ -8,13 +8,13 @@ class HeroController extends Controller
 {
     public function index() {
         
-        $heroes = hero::all();
+        $heroes = Hero::all();
 
         return view('heroes.index', compact('heroes'));
 
     }
 
-    public function show(hero $hero) {
+    public function show(Hero $hero) {
 
         return $hero;
 
@@ -35,16 +35,14 @@ class HeroController extends Controller
             'type' => 'required'
         ]);
 
+        $path = request()->file('picture')->store('/public/images/Hero-Icons');
 
-        //temp fileupload not finished
-        $path = request()->file('picture')->store('/public/images');
-
-        return $path;
+        $filename = @array_pop(explode('/', $path));
         
-        hero::create([
+        Hero::create([
             'name' => request('name'),
             'type' => request('type'),
-            'picture' => request('picture')
+            'picture' => "storage/images/Hero-Icons/".$filename
         ]);
 
         

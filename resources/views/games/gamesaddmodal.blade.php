@@ -28,7 +28,7 @@
                 @foreach ($heroes as $hero)
                   <div class="col-md-1 col-4">
                     <input class="single-checkbox" type="checkbox" name="herochoice[]" id="{{ $hero->name }}" value="{{ $hero->id }}" />
-                    <label for="{{ $hero->name }}" class="bla-hm {{ str_replace(' ', '-', strtolower($hero->name)) }} m-0"></label>
+                  <label for="{{ $hero->name }}" class="bla-hm m-0" style="background-image: url('{{ asset($hero->picture) }}');"></label>
                   </div>
                 @endforeach
                 </div>
@@ -38,7 +38,7 @@
                 <div class="col-lg-2 col-6">
                   <figure class="figure">
                   <input type="radio" name="mapchoice" id="{{ $map->name }}" value="{{ $map->id }}" />&nbsp;
-                  <label for="{{ $map->name }}" class="text-ow-white bla-map {{ strtolower($map->name) }}"></label>&nbsp;
+                  <label for="{{ $map->name }}" class="text-ow-white bla-map" style="background-image: url('{{ ($map->picture) }}');"></label>&nbsp;
                   <figcaption class="figure-caption text-center"><b>{{ $map->name }}</b></figcaption>
                   </figure>
                 </div>

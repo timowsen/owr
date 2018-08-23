@@ -6,6 +6,8 @@ use Auth;
 
 use Storage;
 
+use App\Hero;
+
 class Bnetaccount extends Model
 {
     public function User() {
@@ -160,8 +162,12 @@ class Bnetaccount extends Model
                 $value .= ' | Winrate: '. number_format($winrate, 2) .'' . '%';
             }
 
+            $heropicture = Hero::where('name', '=', $heroname)->value('picture');
+
+          
+
             $heroplaytime .= '<li class="list-group-item">
-                    <img src="/images/Hero-Icons/Icon-' . $heroname . '.png" alt=' . $heroname . ' class="img-thumbnailtable3">
+                    <img src="'. asset($heropicture) .'" alt=' . $heroname . ' class="img-thumbnailtable3">
                     <p style="font-size:12px;">&nbsp;&nbsp;&nbsp;' . $value . '</p>
                     <span class="list-group-progress" style="width: ' . $barlength . '%;"></span>
                 </li>';
@@ -189,8 +195,10 @@ class Bnetaccount extends Model
                 $value = number_format($value,0) . " Hours played";
             }
 
+            $heropicture = Hero::where('name', '=', $heroname)->value('picture');
+
             $heroqpplaytime .= '<li class="list-group-item">
-                    <img src="/images/Hero-Icons/Icon-' . $heroname . '.png" alt=' . $heroname . ' class="img-thumbnailtable3">
+                    <img src="'. asset($heropicture) .'" alt=' . $heroname . ' class="img-thumbnailtable3">
                     &nbsp;&nbsp;&nbsp;' . $value . '
                     <span class="list-group-progress" style="width: ' . $barlength . '%;"></span>
                 </li>';

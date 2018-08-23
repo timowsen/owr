@@ -23,7 +23,7 @@
         },
         "theme": "classic",
         "content": {
-            "message": "This website uses cookies to ensure you get the best experience out of this website.",
+            "message": "This website uses cookies to ensure you get the best experience out of this application.",
             "href": "/dataprotection"
         }
     })});

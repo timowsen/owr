@@ -6,7 +6,7 @@ use Auth;
 
 use App\Game;
 
-use App\hero;
+use App\Hero;
 
 use App\Map;
 
@@ -30,7 +30,7 @@ class GameController extends Controller
 
         $bnetaccount = Bnetaccount::where('user_id', '=', Auth::id())->get();
 
-        $heroes = hero::all();
+        $heroes = Hero::all();
 
         $maps = Map::all();
 
@@ -46,7 +46,12 @@ class GameController extends Controller
             $array = "";
         }
         
-        $modal = Bnetaccount::playtimeModal($array);
+        if(!empty($array)) {
+            $modal = Bnetaccount::playtimeModal($array);
+        } else {
+            $modal = "";
+        }
+        
 
         //Difference in Rating to last game
         if(!empty($games)) {

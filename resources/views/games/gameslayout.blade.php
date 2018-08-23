@@ -23,7 +23,7 @@
                             @foreach ($bnetaccount as $account)
                                 @if ($account->winrate && $account->rating && $account->tier)
                                 <div>
-                                    <p class="h2 text-ow-white">WINRATE: {{$account->winrate}} % RATING: {{$account->rating}}<img src="/images/Rank-Icons/{{$account->tier}}" alt="{{$account->tier}}"  style="
+                                    <p class="h2 text-ow-white">WINRATE: {{$account->winrate}} % RATING: {{$account->rating}}<img src="{{asset("storage/images/Rank-Icons/" . $account->tier)}}" alt="{{$account->tier}}"  style="
                                             height: 50px; width: auto;">
                                     </p>
                                 </div>

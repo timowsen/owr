@@ -13,7 +13,7 @@ class Game extends Model
     }
 
     public function heroes() {
-        return $this->belongsToMany(hero::class);
+        return $this->belongsToMany(Hero::class);
     }
 
 
