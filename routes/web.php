@@ -62,6 +62,8 @@ Route::post('/refresh', ['uses' => 'BattlenetController@refresh', 'middleware' =
 
 Route::post('/bnetaccount', ['uses' => 'BattlenetController@store', 'middleware' => 'auth']);
 
+Route::get('/debug', ['uses' => 'BattlenetController@debug', 'middleware' => 'auth']);
+
 //Routes get with 404 access
 
 Route::get('/bnetaccount', function(){

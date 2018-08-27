@@ -44,5 +44,12 @@ class BattlenetController extends Controller
         return redirect('/games');
 
     }
+
+    public function debug() {
+
+        $debug = Bnetaccount::debugbnetapiData();
+
+        return $debug;
+    }
     
 }

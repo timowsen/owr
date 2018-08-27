@@ -28,6 +28,8 @@ class Bnetaccounts extends Migration
 
             $table->string('tier')->nullable();
 
+            $table->string('endorsementlevel')->nullable();
+
             $table->float('winrate', 4, 2)->nullable();
 
             $table->string('avatar')->nullable();

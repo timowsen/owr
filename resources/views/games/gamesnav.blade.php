@@ -33,7 +33,7 @@
                     <form class="form-inline" action="/refresh" method="POST">
                         @csrf
                         <button type="submit" name="refreshstats" class="btn btn-secondary">
-                                        REFRESH STATS
+                            REFRESH STATS
                         </button>
                     </form>
                 </li>

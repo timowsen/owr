@@ -14,6 +14,43 @@ class Bnetaccount extends Model
         return $this->belongsTo(User::class);
     }
 
+    public static function debugbnetapiData() {
+
+        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
+            $apiurl = env('OW_API_URL', false);
+            $apiport = env('OW_API_PORT', false);
+        } else {
+            $apiurl = 0;
+            $apiport = 0;
+        }
+
+        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
+            $apiurl = env('OW_API_URL', false);
+            $apiport = env('OW_API_PORT', false);
+        } else {
+            $apiurl = 0;
+            $apiport = 0;
+        } 
+        if(empty($accname)) {
+            $battle = Bnetaccount::select('bnetaccount')->where('user_id', '=', Auth::id())->first();
+            $battle = $battle['bnetaccount'];
+        } else {
+            $battle = $accname;
+        }
+        $options  = array('http' => array('user_agent' => 'timowsen12345'));
+        $context = stream_context_create($options);
+        if($apiurl !== 0 && $apiport !== 0) {
+            $url = "http://$apiurl:$apiport/api/v3/u/$battle/blob";
+            $data = file_get_contents($url, false, $context);
+            $json = json_decode($data, true);
+
+            return $json;
+        } else {
+            return false;
+        }
+            
+    }
+
     public static function getbnetapiData($accname = "", $type = 2) {
         
         if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
@@ -33,7 +70,7 @@ class Bnetaccount extends Model
         $context = stream_context_create($options);
         if($apiurl !== 0 && $apiport !== 0) {
             $url = "http://$apiurl:$apiport/api/v3/u/$battle/blob";
-            $data = @file_get_contents($url, false, $context);
+            $data = file_get_contents($url, false, $context);
 
             if(!empty($data)) {
                 
@@ -54,11 +91,13 @@ class Bnetaccount extends Model
                 $tier = $ranks[$decode['eu']['stats']['competitive']['overall_stats']['tier']];
                 $winrate = $decode['eu']['stats']['competitive']['overall_stats']['win_rate'];
                 $avatar = $decode['eu']['stats']['competitive']['overall_stats']['avatar'];
+                $endorsementlevel = $decode['eu']['stats']['competitive']['overall_stats']['endorsement_level'];
     
                 if(!empty($avatar)) {
-                    $picture = @file_get_contents($avatar);
+                    $picture = file_get_contents($avatar);
                     if(!empty($picture)) {
-                        $filename = @array_pop(explode('/', $avatar));
+                        $explodearray = explode('/', $avatar);
+                        $filename = array_pop($explodearray);
                         $bla = Storage::put('public/avatar/'. $filename .'', $picture);
                     }
                 }
@@ -71,6 +110,7 @@ class Bnetaccount extends Model
                         'tier' => $tier,
                         'winrate' => $winrate,
                         'avatar' => "storage\avatar\\".$filename,
+                        'endorsementlevel' => $endorsementlevel,
                         'statscache' => $data
                     ]);
 
