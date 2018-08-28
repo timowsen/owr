@@ -5,7 +5,15 @@
 			<div class="modal-body">
 				<h1 class="text-center">Quick Play Playtime</h1>
 				<ul class="list-group">
-					{!! $modal['qptime'] !!}
+				@if (!empty($comptime))
+					@foreach ($qptime as $heroname => $value)
+						<li class="list-group-item">
+							<img src="{{ asset($value['heropicture']) }}" alt="{{ $heroname }}" class="img-thumbnailtable3">
+							&nbsp;&nbsp;&nbsp;{{$value['value']}}
+							<span class="list-group-progress" style="width: {{$value['barlength']}}%;"></span>
+						</li>
+					@endforeach
+				@endif
 				</ul>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
@@ -23,7 +31,15 @@
 			<div class="modal-body">
 				<h1 class="text-center">Competitive Playtime</h1>
 				<ul class="list-group">
-					 {!! $modal['ptime'] !!}
+				@if (!empty($comptime))
+					@foreach ($comptime as $heroname => $value)
+						<li class="list-group-item">
+							<img src="{{ asset($value['heropicture']) }}" alt="{{ $heroname }}" class="img-thumbnailtable3">
+							&nbsp;&nbsp;&nbsp;{{$value['value']}}
+							<span class="list-group-progress" style="width: {{$value['barlength']}}%;"></span>
+						</li>
+					@endforeach
+				@endif
 				</ul>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>

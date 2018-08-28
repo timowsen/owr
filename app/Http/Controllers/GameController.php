@@ -52,6 +52,14 @@ class GameController extends Controller
             $modal = "";
         }
         
+        if(!empty($modal) && is_array($modal)) {
+            $comptime = collect($modal['ptime']);
+            $qptime = collect($modal['qptime']);
+        } else {
+            $comptime = "";
+            $qptime = "";
+        }
+
 
         //Difference in Rating to last game
         if(!empty($games)) {
@@ -65,8 +73,8 @@ class GameController extends Controller
                 $lastrating = $game['rating'];
             }
         }
-
-        return view('games.gameslayout', compact('games', 'heroes', 'maps', 'difference', 'bnetaccount', 'users', 'modal'));
+        
+        return view('games.gameslayout', compact('games', 'heroes', 'maps', 'difference', 'bnetaccount', 'users', 'comptime', 'qptime'));
 
     }
 

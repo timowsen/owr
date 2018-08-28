@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Storage;
 class BattlenetController extends Controller
 {
     public function store() 
-    {
+    {   
+        $id = Auth::id();
         
         $this->validate(request(), [
-            'bnetaccount' => 'required'
+            'bnetaccount' => 'required|unique:bnetaccounts',
+            'user_id' => 'unique:bnetaccounts,'. $id
         ]);
 
         $bla = Bnetaccount::getbnetapiData(request('bnetaccount'), 1);

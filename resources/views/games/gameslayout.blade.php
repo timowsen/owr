@@ -134,7 +134,7 @@
         @if (!count($bnetaccount))
             @include('api.bnetaddmodal')
         @endif
-        @if (!empty($modal['ptime']) && !empty($modal['qptime']))
+        @if (!empty($comptime) && !empty($qptime))
             @include('api.playtimemodal')
         @endif
 
