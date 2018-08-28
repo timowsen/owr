@@ -15,8 +15,7 @@ class BattlenetController extends Controller
         $id = Auth::id();
         
         $this->validate(request(), [
-            'bnetaccount' => 'required|unique:bnetaccounts',
-            'user_id' => 'unique:bnetaccounts,'. $id
+            'bnetaccount' => 'unique:bnetaccounts,bnetaccount,user_id'.$id
         ]);
 
         $bla = Bnetaccount::getbnetapiData(request('bnetaccount'), 1);

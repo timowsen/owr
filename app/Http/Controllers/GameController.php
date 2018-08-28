@@ -89,22 +89,36 @@ class GameController extends Controller
             'mapchoice' => 'required',
             'herochoice' => 'required|between:1,3'
         ]);
-                
-        $game = Game::create([
+
+        $gameInfo = [
             'rating' => request('rating'),
             'win' => request('win'),
             'bobos' => (!empty(request('bobos')) ? (request('bobos')) : 0),
             'map_id' => request('mapchoice'),
             'user_id' => auth()->id()
-        ]);
-            
-        $game->heroes()->attach(request('herochoice'));
+        ];
 
-        if($game) {
+        // check not yet exists
+         $game = @Game::where([
+            ['rating', '=', $gameInfo['rating']],
+            ['win', '=', $gameInfo['win']],
+            ['bobos', '=', $gameInfo['bobos']],
+            ['map_id', '=', $gameInfo['map_id']],
+            ['user_id', '=', $gameInfo['user_id']],
+        ])->get()[0]; 
+
+
+
+        if(empty($game)){
+            $game = Game::Create($gameInfo);
+            $game->heroes()->attach(request('herochoice'));
             session()->flash('message', 'Game successfully added!');
-
             return redirect('/games');
-        } 
+        } else {
+            session()->flash('message', 'Game not added, duplicate not possible!');
+            return redirect('/games');
+        }
+
 
     }
 

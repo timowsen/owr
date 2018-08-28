@@ -31,6 +31,8 @@ class CreateGamesTable extends Migration
 
             $table->integer('bobos');
 
+            $table->unique(['user_id', 'map_id', 'win', 'rating', 'bobos']);
+
             $table->timestamps();
         });
     }
