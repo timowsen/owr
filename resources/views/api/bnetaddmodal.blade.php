@@ -6,10 +6,10 @@
           <form action="/bnetaccount" method="POST">
             @csrf
             <div class="form-group">
-                <h1>Battle.net Account</h1>
+                <h1>BATTLE TAG</h1>
                 <p class="text-center">Format: mustermann#1337</p>
                 <div class="row justify-content-md-center">
-                  <input type="text" name="bnetaccount" class="form-control col-6">
+                  <input type="text" name="bnetaccount" class="form-control col-lg-6">
                 </div>
             </div>
             <div class="modal-footer">

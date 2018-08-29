@@ -23,9 +23,9 @@ class BattlenetController extends Controller
         $bla = Bnetaccount::getbnetapiData($sanitizedbnetaccount, 1);
 
         if($bla) {
-            session()->flash('message', 'Bnetaccount sucessfully added!');
+            session()->flash('message', 'Battletag sucessfully added!');
         } else {
-            session()->flash('message', 'Bnetaccount not added - Wrong format or API DOWN!');
+            session()->flash('message', 'Battletag not added - Wrong format or API DOWN!');
         }
         
         return redirect('/games');
