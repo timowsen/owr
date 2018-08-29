@@ -112,8 +112,11 @@ class Bnetaccount extends Model
                 }
                 
                 if($type == 1) {
+
+                    $sanitizedbnetaccount = str_replace('#', '-', request('bnetaccount'));
+
                     $bnetadd = Bnetaccount::create([
-                        'bnetaccount' => request('bnetaccount'),
+                        'bnetaccount' => $sanitizedbnetaccount,
                         'user_id' => auth()->id(),
                         'rating' => $rating,
                         'tier' => $tier,

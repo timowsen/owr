@@ -93,17 +93,6 @@ html {
   height: 100%;
 }
 
-.bg {
-  /* The image used */
-  background-image: url(/images/702620.jpg?bf2a176dcca370fd97a16c7fc2c65852);
-  /* Full height */
-  height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .text-center {
   text-align: center;
 }
@@ -539,5 +528,45 @@ button.list-group-item-danger.active {
   width: 45px;
   height: auto;
   vertical-align: middle;
+}
+
+.bg::before {
+  background-color: #000010;
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+}
+
+.bg {
+  /* The image used */
+  background-image: url(/images/pattern.jpg?366b73f57d5dfc7eaa55cc8e32c4e3f6);
+  background-repeat: repeat;
+  background-size: 8px;
+  background-attachment: fixed;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  z-index: 0;
+}
+
+.bg::after {
+  content: "";
+  background-image: url(/images/owbgsymbolsvg.svg?e7c7fe7b5555466a5b4f286923106c13);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.2;
+  width: 100%;
 }
 
