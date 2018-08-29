@@ -7,8 +7,10 @@
             @csrf
             <div class="form-group">
                 <h1>Battle.net Account</h1>
-                <p>Format: maxmusterm4nn-1337</p>
-                <input type="text" name="bnetaccount" class="form-control">
+                <p class="text-center">Format: mustermann#1337</p>
+                <div class="row justify-content-md-center">
+                  <input type="text" name="bnetaccount" class="form-control col-6">
+                </div>
             </div>
             <div class="modal-footer">
                 <input type="submit" value="ADD ACCOUNT" class="btn btn-xs btn-success">

@@ -18,7 +18,9 @@ class BattlenetController extends Controller
             'bnetaccount' => 'unique:bnetaccounts,bnetaccount,user_id'.$id
         ]);
 
-        $bla = Bnetaccount::getbnetapiData(request('bnetaccount'), 1);
+        $sanitizedbnetaccount = str_replace('#', '-', request('bnetaccount'));
+
+        $bla = Bnetaccount::getbnetapiData($sanitizedbnetaccount, 1);
 
         if($bla) {
             session()->flash('message', 'Bnetaccount sucessfully added!');
