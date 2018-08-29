@@ -11,10 +11,9 @@
 |
 */
 //Auth / Greet Routes
-
 Route::get('/', 'AuthController@showloginform');
 
-//overwrite to set default login method and corresponding view
+//Routes that don´t need auth
 Route::get('login', ['as' => 'login', 'uses' => 'AuthController@showloginform']);
 
 Route::get('/register', 'AuthController@showregisterform');
@@ -23,49 +22,53 @@ Route::post('/register', 'AuthController@store');
 
 Route::post('/login', 'SessionsController@create');
 
-Route::post('/logout', ['uses' => 'SessionsController@destroy', 'middleware' => 'auth']);
+//Footer Routes
+Route::get('/imprint', 'ImprintController@showimprint');
+
+Route::get('/dataprotection', 'ImprintController@showdataprotection');
+
+//Routes which need authenticated individual
+Route::middleware(['auth'])->group(function ()
+{
+    //logout
+    Route::post('/logout', 'SessionsController@destroy');
+
+    //Hero Routes
+    Route::get('/heroes', 'HeroController@index');
+
+    Route::get('/heroes/create', 'HeroController@create');
+
+    Route::post('/heroes', 'HeroController@store');
+        
+    Route::get('/heroes/{hero}', 'HeroController@show');
+
+    //Map Routes
+    Route::get('/maps/create', 'MapController@create');
+
+    Route::get('/maps', 'MapController@index');
+
+    Route::get('/maps/{map}', 'MapController@show');
+
+    Route::post('/maps', 'MapController@store');
+
+    //Game Routes
+    Route::get('/games', 'GameController@showgames');
+
+    Route::post('/games', 'GameController@store');
+
+    Route::delete('/games', 'GameController@delete');
+
+    //Bnetaccount & Api Routes
+    Route::post('/refresh', 'BattlenetController@refresh');
+
+    Route::post('/bnetaccount', 'BattlenetController@store');
+
+    Route::get('/debug', 'BattlenetController@debug');
 
 
-//Hero Routes
+});
 
-Route::get('/heroes', ['uses' => 'HeroController@index', 'middleware' => 'auth']);
-
-Route::get('/heroes/create', ['uses' => 'HeroController@create', 'middleware' => 'auth']);
-
-Route::post('/heroes', ['uses' => 'HeroController@store', 'middleware' => 'auth']);
-    
-Route::get('/heroes/{hero}', ['uses' => 'HeroController@show', 'middleware' => 'auth']);
-
-
-//Map Routes
-
-Route::get('/maps/create', ['uses' => 'MapController@create', 'middleware' => 'auth']);
-
-Route::get('/maps', ['uses' => 'MapController@index', 'middleware' => 'auth']);
-
-Route::get('/maps/{map}', ['uses' => 'MapController@show', 'middleware' => 'auth']);
-
-Route::post('/maps', ['uses' => 'MapController@store', 'middleware' => 'auth']);
-
-
-//Game Routes
-
-Route::get('/games', ['uses' => 'GameController@showgames', 'middleware' => 'auth']);
-
-Route::post('/games', ['uses' => 'GameController@store', 'middleware' => 'auth']);
-
-Route::delete('/games', ['uses' => 'GameController@delete', 'middleware' => 'auth']);
-
-
-//Bnetaccount & Api Routes
-Route::post('/refresh', ['uses' => 'BattlenetController@refresh', 'middleware' => 'auth']);
-
-Route::post('/bnetaccount', ['uses' => 'BattlenetController@store', 'middleware' => 'auth']);
-
-Route::get('/debug', ['uses' => 'BattlenetController@debug', 'middleware' => 'auth']);
-
-//Routes get with 404 access
-
+//Routes which net 404 when triggered with get
 Route::get('/bnetaccount', function(){
     abort(404);
 });
@@ -73,11 +76,8 @@ Route::get('/logout', function(){
     abort(404);
 });
 
-//Footer Routes
-Route::get('/imprint', 'ImprintController@showimprint');
-
-Route::get('/dataprotection', 'ImprintController@showdataprotection');
-
 Route::group(['middleware' => ['web']], function () {
-    
+        
+
+
 });
