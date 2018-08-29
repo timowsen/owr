@@ -541,7 +541,7 @@ button.list-group-item-danger.active {
 }
 
 .bgo::before {
-    background-color: rgba($color: #000010, $alpha: 1);
+    background-color: rgba($color: #000010, $alpha: 0.95);
     content: "";
     position: fixed;
     top: 0;
@@ -558,7 +558,7 @@ button.list-group-item-danger.active {
     /* The image used */
     background-image: url("../background/pattern.jpg");
     background-repeat: repeat;
-    background-size: 8px;
+    background-size: 15px;
     background-attachment: fixed;
     /* Full height */
     height: 100%;
