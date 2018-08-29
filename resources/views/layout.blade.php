@@ -15,13 +15,14 @@
   </head>
     <body class="bgo">
             
-      @yield('content')            
+      @yield('content')  
+      
+      @include('datafooter')
+
+      @include('footer')
 
     </body>
    
         @yield('timeout')
 
-        @include('datafooter')
-
-        @include('footer')
 </html>
