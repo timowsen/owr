@@ -123,6 +123,11 @@ html {
         z-index: 1030;
         max-height: 5%;
     }
+    .imprint {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
 }
 
 
@@ -574,7 +579,7 @@ button.list-group-item-danger.active {
     bottom: 0;
     left: 0;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.17;
     width: 100%;
 }
 
@@ -582,3 +587,4 @@ button.list-group-item-danger.active {
     padding-right:0 !important;
     overflow-y: auto;
 }
+

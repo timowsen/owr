@@ -1,6 +1,6 @@
 
 <footer class="footer">
-    <div class="container">
+    <div class="container imprint">
       <span class="text-muted"><p><a class="text-ow-white" href="/dataprotection">
         Datenschutzerklärung</a></p></span>
         <span class="text-muted"><p><a class="text-ow-white" href="/imprint">
