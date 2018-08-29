@@ -530,7 +530,7 @@ button.list-group-item-danger.active {
   vertical-align: middle;
 }
 
-.bg::before {
+.bgo::before {
   background-color: #000010;
   content: "";
   position: fixed;
@@ -542,7 +542,7 @@ button.list-group-item-danger.active {
   height: 100%;
 }
 
-.bg {
+.bgo {
   /* The image used */
   background-image: url(/images/pattern.jpg?366b73f57d5dfc7eaa55cc8e32c4e3f6);
   background-repeat: repeat;
@@ -554,7 +554,7 @@ button.list-group-item-danger.active {
   z-index: 0;
 }
 
-.bg::after {
+.bgo::after {
   content: "";
   background-image: url(/images/owbgsymbolsvg.svg?e7c7fe7b5555466a5b4f286923106c13);
   background-repeat: no-repeat;

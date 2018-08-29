@@ -13,7 +13,7 @@
     <link href="/css/theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
-    <body class="bg">
+    <body class="bgo">
             
       @yield('content')            
 

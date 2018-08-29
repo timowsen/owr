@@ -535,7 +535,7 @@ button.list-group-item-danger.active {
     vertical-align: middle;
 }
 
-.bg::before {
+.bgo::before {
     background-color: rgba($color: #000010, $alpha: 1);
     content: "";
     position: fixed;
@@ -549,7 +549,7 @@ button.list-group-item-danger.active {
 
 
 
-.bg {
+.bgo {
     /* The image used */
     background-image: url("../background/pattern.jpg");
     background-repeat: repeat;
@@ -562,7 +562,7 @@ button.list-group-item-danger.active {
 }
 
 
-.bg::after {
+.bgo::after {
     content: "";
     background-image: url("../background/owbgsymbolsvg.svg");
     background-repeat: no-repeat;
