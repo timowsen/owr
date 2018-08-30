@@ -48,7 +48,7 @@
                                             <path id="Fill-11_2_" fill="#C913F5" d="M114,43.6c3.9,7.3,6.1,15.7,6.1,24.6c0,27.7-21.4,50.4-48.6,52.4v5.3
                                                 c30.1-2,53.9-27,53.9-57.7c0-10.1-2.6-19.5-7.1-27.8L114,43.6z"/>
                                         </g>
-                                        <text fill="white" transform="matrix(1 0 0 1 71.4474 129.9033)" font-family="inherit" font-size="105px">{{$account->endorsementlevel}}</text>
+                                        <text fill="white" transform="matrix(1 0 0 1 71.4474 129.9033)" font-family="inherit" font-size="105px">{{ $account->endorsementlevel }}</text>
                                         </svg>
                                     </p>
                                 </div>

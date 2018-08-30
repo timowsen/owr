@@ -63,6 +63,14 @@ class HeroSeeder extends Seeder
         ]);
 
         DB::table('heroes')->insert([
+            'type' => 1,
+            'name' => 'Wrecking_Ball',
+            'picture' => 'storage/images/Hero-Icons/Icon-wrecking_ball.png',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
+
+        DB::table('heroes')->insert([
             'type' => 2,
             'name' => 'Genji',
             'picture' => 'storage/images/Hero-Icons/Icon-genji.png',
@@ -227,14 +235,6 @@ class HeroSeeder extends Seeder
             'type' => 3,
             'name' => 'Brigitte',
             'picture' => 'storage/images/Hero-Icons/Icon-brigitte.png',
-            'created_at' => \Carbon\Carbon::now(),
-            'updated_at' => \Carbon\Carbon::now()
-        ]);
-
-        DB::table('heroes')->insert([
-            'type' => 3,
-            'name' => 'Wrecking_Ball',
-            'picture' => 'storage/images/Hero-Icons/Icon-wrecking_ball.png',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);

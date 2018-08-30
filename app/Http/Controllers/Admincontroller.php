@@ -60,7 +60,7 @@ class Admincontroller extends Controller
 
     public function showheroes()
     {
-        $heroes = hero::all();
+        $heroes = hero::orderBy('type')->get();
 
         return view('backoffice.heroes', compact('heroes'));
     }
