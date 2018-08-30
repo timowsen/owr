@@ -2,7 +2,7 @@
 
     @section('content')
     <div class="container">
-        <nav class="navbar-expand-lg">
+        <nav class="navbar-expand-lg mb-1">
             <ul class="navbar-nav paddingremove">
                 <li class="nav-item ml-1">          
                     <a href="/games">
@@ -34,8 +34,18 @@
                 </li>
             </ul>
         </nav>
+        @include('games.flashmessage')
 
         @yield('type')
 
     </div>
+
+        @if ($flash = session('message') or !empty($errors))
+        <script>
+            window.setTimeout(function() {
+                    $(".alert").hide(); 
+            }, 2500);
+        </script>
+        @endif
+        
     @endsection

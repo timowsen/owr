@@ -11,7 +11,7 @@
                         <div class="cardbo text-white mb-3">
                             <div class="card-body">
 
-                                <form action="/backoffice/users" method="POST" class="inline-group">
+                                <form action="/backoffice/maps" method="POST" class="inline-group">
                                     @csrf
                                     <p class="card-text">
                                         {{ $map->name }}

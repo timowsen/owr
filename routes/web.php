@@ -71,6 +71,10 @@ Route::middleware(['auth'])->group(function ()
     Route::get('/backoffice/heroes', 'AdminController@showheroes');
 
     Route::get('/backoffice/maps', 'AdminController@showmaps');
+
+    Route::delete('backoffice/heroes', 'AdminController@destroyhero');
+
+    Route::delete('backoffice/maps', 'AdminController@destroymap');
 });
 
 //Routes which net 404 when triggered with get
