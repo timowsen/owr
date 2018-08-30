@@ -65,7 +65,12 @@ Route::middleware(['auth'])->group(function ()
 
     Route::get('/debug', 'BattlenetController@debug');
 
+    //Backoffice
+    Route::get('/backoffice', 'AdminController@show');
 
+    Route::get('/backoffice/heroes', 'AdminController@showheroes');
+
+    Route::get('/backoffice/maps', 'AdminController@showmaps');
 });
 
 //Routes which net 404 when triggered with get

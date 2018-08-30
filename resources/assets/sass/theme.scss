@@ -588,3 +588,23 @@ button.list-group-item-danger.active {
     overflow-y: auto;
 }
 
+.cardbo {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0.25rem;
+}
+
+.w-10 {
+    width: 10% !important;
+}
+
+.w-15 {
+    width: 15% !important;
+}

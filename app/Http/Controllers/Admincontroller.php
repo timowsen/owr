@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Bnetaccount;
+
+use App\User;
+
+use App\Hero;
+
+use App\Map;
+
 class Admincontroller extends Controller
 {
     /**
@@ -43,9 +51,25 @@ class Admincontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
+    {   
+        $users = User::all();
+
+        return view('backoffice.users', compact('users'));
+    }
+
+    public function showheroes()
     {
-        //
+        $heroes = hero::all();
+
+        return view('backoffice.heroes', compact('heroes'));
+    }
+
+    public function showmaps()
+    {
+        $maps = Map::all();
+
+        return view('backoffice.maps', compact('maps'));
     }
 
     /**
