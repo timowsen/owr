@@ -80,9 +80,38 @@ class Admincontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edituserrole()
     {
-        //
+
+        $this->validate(request(), [
+            'role' => 'required|between:0,1'
+        ]);
+         
+        $id = request('changerole');
+
+        $role = request('role');
+
+        User::find($id)->update(['admin' => $role]);
+
+        session()->flash('message', 'Role of User changed successfully');
+
+        return redirect('/backoffice');
+         
+    }
+
+    public function resetuserpassword()
+    {   
+        $this->validate(request(), [
+            'resetpw' => 'required'
+        ]);
+
+        $id = request('resetpw');
+
+        User::where('id', $id)->update(['resetpw' => 1]);
+
+        session()->flash('message', 'Password for user successfully reset!');
+
+        return redirect('/backoffice');
     }
 
     /**

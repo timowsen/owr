@@ -38,5 +38,25 @@
                     </form>
                 </li>
             @endif
+            @foreach ($users as $user)
+                @if ($user->admin == 1)
+                    @if (count($bnetaccount))
+                        <li class="nav-item ml-1">
+                                <a href="/debug">
+                                    <button type="submit" name="refreshstats" class="btn btn-info">
+                                        DEBUG
+                                    </button>
+                                </a>
+                        </li>
+                    @endif
+                <li class="nav-item ml-1">
+                        <a href="/backoffice">
+                            <button type="submit" name="refreshstats" class="btn btn-info">
+                                BACKOFFICE
+                            </button>
+                        </a>
+                </li>
+                @endif
+            @endforeach
         </ul>
     </nav>

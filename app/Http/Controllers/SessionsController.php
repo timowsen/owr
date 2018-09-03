@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class SessionsController extends Controller
 {
 
@@ -11,10 +13,22 @@ class SessionsController extends Controller
     public function create() {
 
         if(!auth()->attempt(request(['email', 'password']))) {
-            
-            return back()->withErrors([
-                'message' => 'Username and/or password doesn´t match'
-            ]);
+
+            $userresetpw = User::where('email', request('email'))->where('resetpw', 1)->value('id');
+
+            if(!empty($userresetpw)) {
+
+                session(['resetemail' => $userresetpw]);
+
+                return view('auth.resetpw');
+
+            } else {
+
+                return back()->withErrors([
+                    'message' => 'Username and/or password doesn´t match'
+                ]);
+
+            }
 
         } else {
 
@@ -22,7 +36,6 @@ class SessionsController extends Controller
 
             return redirect('/games');
         }
-        
 
     }
 

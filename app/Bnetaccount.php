@@ -19,7 +19,7 @@ class Bnetaccount extends Model
         return substr($headers[0], 9, 3);
     }
 
-    public static function debugbnetapiData() {
+    public static function debugbnetapiData($accname = "") {
 
         if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
             $apiurl = env('OW_API_URL', false);
@@ -39,17 +39,25 @@ class Bnetaccount extends Model
         if(empty($accname)) {
             $battle = Bnetaccount::select('bnetaccount')->where('user_id', '=', Auth::id())->first();
             $battle = $battle['bnetaccount'];
+            $cache = Bnetaccount::where('user_id', '=', Auth::id())->value('statscache');
+            $cache = json_decode($cache, true);
         } else {
             $battle = $accname;
         }
-        $options  = array('http' => array('user_agent' => 'timowsen12345'));
-        $context = stream_context_create($options);
-        if($apiurl !== 0 && $apiport !== 0) {
-            $url = "http://$apiurl:$apiport/api/v3/u/$battle/blob";
-            $data = file_get_contents($url, false, $context);
-            $json = json_decode($data, true);
+        if(!empty($battle) && empty($cache)) {
+            $options  = array('http' => array('user_agent' => 'timowsen12345'));
+            $context = stream_context_create($options);
+            if($apiurl !== 0 && $apiport !== 0) {
+                $url = "http://$apiurl:$apiport/api/v3/u/$battle/blob";
+                $data = file_get_contents($url, false, $context);
+                $json = json_decode($data, true);
 
-            return $json;
+                return $json;
+            } else {
+                return false;
+            }
+        } elseif(!empty($cache)) {
+            return $cache;
         } else {
             return false;
         }

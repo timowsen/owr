@@ -35,7 +35,7 @@
             </ul>
         </nav>
         @include('games.flashmessage')
-
+        @include('../errors')
         @yield('type')
 
     </div>
