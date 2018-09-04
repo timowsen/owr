@@ -1,7 +1,7 @@
 # owr
 Overwatch Rating Book
 
-Laravel 5.6
+Laravel 5.7
 
 Preqs: PHP 7.1, Instance of owapi.net for statistics
 
