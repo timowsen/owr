@@ -32,7 +32,7 @@
                         </button>
                     </a>
                 </li>
-                @if (count($bnetaccount))
+                @if(!empty($bnetaccount))
                 <li class="nav-item ml-1">
                         <a href="/debug">
                             <button type="submit" name="refreshstats" class="btn btn-info">
