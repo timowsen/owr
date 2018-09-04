@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
+use Validator;
+
 class AuthController extends Controller
 {
     public function __construct()
@@ -79,22 +81,28 @@ class AuthController extends Controller
     }
 
     public function resetpassword(Request $request)
-    {
-        $this->validate(request(), [
-            'password' => 'required|confirmed'
+    {   
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|confirmed',
         ]);
-        
+
+        if ($validator->fails()) {
+            return view('auth.resetpw')->withErrors($validator);
+        }
+
         $id = $request->session()->pull('resetemail', 'default');
-        
+
         if(!empty($id)) {
 
             User::where('id', $id)->update(['resetpw' => 0]);
 
             User::where('id', $id)->update(['password' => bcrypt(request('password'))]);
+
+            $request->session()->flush();
+            
+            session()->flash('message', 'Successfully changed Password!');
             
             return redirect('/');
-        } else {
-            return redirect('/login');
         }
     }
 }

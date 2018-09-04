@@ -32,6 +32,15 @@
                         </button>
                     </a>
                 </li>
+                @if (count($bnetaccount))
+                <li class="nav-item ml-1">
+                        <a href="/debug">
+                            <button type="submit" name="refreshstats" class="btn btn-info">
+                                DEBUG
+                            </button>
+                        </a>
+                </li>
+                @endif
             </ul>
         </nav>
         @include('games.flashmessage')

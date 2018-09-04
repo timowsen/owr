@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 use App\Bnetaccount;
 
 use App\User;
@@ -57,7 +59,9 @@ class Admincontroller extends Controller
     {   
         $users = User::all();
 
-        return view('backoffice.users', compact('users'));
+        $bnetaccount = Bnetaccount::where('user_id', '=', Auth::id())->get();
+
+        return view('backoffice.users', compact('users', 'bnetaccount'));
     }
 
     public function showheroes()

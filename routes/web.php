@@ -15,6 +15,7 @@ Route::get('/', 'AuthController@showloginform');
 //Routes that don´t need auth
 Route::get('/login', ['as' => 'login', 'uses' => 'AuthController@showloginform']);
 Route::get('/register', 'AuthController@showregisterform');
+Route::get('/resetpassword', 'AuthController@resetpasswordshow');
 Route::post('/registeradmin', 'AuthController@storeadmin');
 Route::post('/register', 'AuthController@store');
 Route::post('/login', 'SessionsController@create');
