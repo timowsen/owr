@@ -10,16 +10,19 @@ use App\Hero;
 
 class Bnetaccount extends Model
 {
-    public function User() {
+    public function User() 
+    {
         return $this->belongsTo(User::class);
     }
 
-    public static function get_http_response_code($url) {
+    public static function get_http_response_code($url) 
+    {
         $headers = get_headers($url);
         return substr($headers[0], 9, 3);
     }
 
-    public static function debugbnetapiData($accname = "") {
+    public static function debugbnetapiData($accname = "") 
+    {
 
         if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
             $apiurl = env('OW_API_URL', false);
@@ -64,7 +67,8 @@ class Bnetaccount extends Model
             
     }
 
-    public static function getbnetapiData($accname = "", $type = 2) {
+    public static function getbnetapiData($accname = "", $type = 2) 
+    {
         
         if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
             $apiurl = env('OW_API_URL', false);
@@ -162,7 +166,8 @@ class Bnetaccount extends Model
         }
     }
 
-    public static function playtimeModal($array) {
+    public static function playtimeModal($array) 
+    {
 
         if(!empty($array) && is_array($array)) {
 

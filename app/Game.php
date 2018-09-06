@@ -4,15 +4,18 @@ namespace App;
 
 class Game extends Model
 {
-    public function map() {
+    public function map() 
+    {
         return $this->belongsTo(Map::class);
     }
 
-    public function user() {
+    public function user() 
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function heroes() {
+    public function heroes() 
+    {
         return $this->belongsToMany(Hero::class);
     }
 

@@ -10,7 +10,8 @@ class SessionsController extends Controller
 {
 
 
-    public function create() {
+    public function create() 
+    {
 
         if(!auth()->attempt(request(['email', 'password']))) {
 
@@ -39,7 +40,8 @@ class SessionsController extends Controller
 
     }
 
-    public function destroy() {
+    public function destroy() 
+    {
 
         auth()->logout();
 

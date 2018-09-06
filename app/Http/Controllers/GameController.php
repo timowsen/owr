@@ -17,14 +17,16 @@ use App\Bnetaccount;
 class GameController extends Controller
 {
 
-    public function __construct() {
+    public function __construct() 
+    {
 
         $this->middleware('auth');
 
     }
 
 
-    public function showgames() {
+    public function showgames() 
+    {
 
         $games = Game::where('user_id', '=', Auth::id())->with('heroes')->get();
 
@@ -38,7 +40,8 @@ class GameController extends Controller
 
         $apiblob = $bnetaccount->pluck('statscache');
 
-        if(!empty($apiblob)) {
+        if(!empty($apiblob)) 
+        {
             foreach($apiblob as $blob) {
                 $array = json_decode($blob, true);
             }
@@ -46,7 +49,8 @@ class GameController extends Controller
             $array = "";
         }
         
-        if(!empty($array)) {
+        if(!empty($array)) 
+        {
             $modal = Bnetaccount::playtimeModal($array);
         } else {
             $modal = "";
@@ -62,7 +66,8 @@ class GameController extends Controller
 
 
         //Difference in Rating to last game
-        if(!empty($games)) {
+        if(!empty($games)) 
+        {
             $difference = array();
             $lastrating = 0;
             foreach($games as $game) {
@@ -80,7 +85,8 @@ class GameController extends Controller
 
 
     
-    public function store() {
+    public function store() 
+    {
 
 
         $this->validate(request(), [
@@ -109,7 +115,8 @@ class GameController extends Controller
 
 
 
-        if(empty($game)){
+        if(empty($game))
+        {
             $game = Game::Create($gameInfo);
             $game->heroes()->attach(request('herochoice'));
             session()->flash('message', 'Game successfully added!');
@@ -122,7 +129,8 @@ class GameController extends Controller
 
     }
 
-    public function delete() {
+    public function delete() 
+    {
 
         Game::where('id',request('delete'))->delete();
 

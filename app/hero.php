@@ -4,7 +4,8 @@ namespace App;
 
 class Hero extends Model
 {
-    public function games() {
+    public function games() 
+    {
         return $this->belongsToMany(Game::class);
     }    
 }
