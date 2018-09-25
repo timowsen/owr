@@ -27,19 +27,12 @@ class GameController extends Controller
 
     public function showgames() 
     {
-
         $games = Game::where('user_id', '=', Auth::id())->with('heroes')->get();
-
         $bnetaccount = Bnetaccount::where('user_id', '=', Auth::id())->get();
-
         $heroes = Hero::orderBy('type')->get();
-
         $maps = Map::orderBy('type')->get();
-
         $users = User::where('id', '=', Auth::id())->get();
-
         $apiblob = $bnetaccount->pluck('statscache');
-
         if(!empty($apiblob)) 
         {
             foreach($apiblob as $blob) {
@@ -48,14 +41,12 @@ class GameController extends Controller
         } else {
             $array = "";
         }
-        
         if(!empty($array)) 
         {
             $modal = Bnetaccount::playtimeModal($array);
         } else {
             $modal = "";
         }
-        
         if(!empty($modal) && is_array($modal)) {
             $comptime = collect($modal['ptime']);
             $qptime = collect($modal['qptime']);
@@ -131,11 +122,8 @@ class GameController extends Controller
 
     public function delete() 
     {
-
         Game::where('id',request('delete'))->delete();
-
         session()->flash('message', 'Game deleted successfully');
-
         return redirect('/games');
     }
 

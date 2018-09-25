@@ -13,16 +13,10 @@
     <link href="/css/theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
-    <body class="bgo">
-            
+    <body class="bgo">  
       @yield('content')  
-      
       @include('datafooter')
-
       @include('footer')
-
     </body>
-   
         @yield('timeout')
-
 </html>

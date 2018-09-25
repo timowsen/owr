@@ -1,8 +1,5 @@
 @extends ('layout')
-
     @section ('content')
-
-
         <!-- content -->
         <div class="container">
             <div class="welcome">
@@ -137,11 +134,8 @@
         @if (!empty($comptime) && !empty($qptime))
             @include('api.playtimemodal')
         @endif
-
     @endsection
-
     @section('timeout')
-
         @if ($flash = session('message') or !empty($errors))
             <script>
                 window.setTimeout(function() {
@@ -149,5 +143,4 @@
                 }, 2500);
             </script>
         @endif
-
     @endsection

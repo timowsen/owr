@@ -19,10 +19,8 @@ class AuthAdmin
     {
         if (!Auth::check()) 
             return redirect('/');
-        
         if(!Auth::user()->admin)
             return redirect('/games');
-        
         return $next($request);
     }
 }

@@ -1,7 +1,5 @@
 @extends('layout')
-
     @section('content')
-
     <div class="container text-ow-white">
             <h1 class="text-center">Impressum</h1>
             <div class="col">
@@ -22,11 +20,10 @@
                                     Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br>
                                     Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
                                     </p><br> 
-                                     </div>
+                                </div>
                                      
                          </div>     
                 </div>
             </div>
     <div>
-
     @endsection

@@ -1,6 +1,4 @@
 @extends('layout');
-
-
     @section('content')
         @foreach ($maps as $map)
         <div class="d-flex">

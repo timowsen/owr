@@ -1,6 +1,4 @@
 @extends('/layout')
-
-
     @section('content')
             <div class="container text-ow-white justify-content-md-center">
                 <form class="form-horizontal" role="form" method="POST" action="/maps">
@@ -80,8 +78,6 @@
                         </div>
                     </div>
                 </form>
-                
                 @include('/errors')
-
             </div>
     @endsection

@@ -1,7 +1,5 @@
 @extends ('layout')
-
     @section ('content')
-
             <div class="bg">
                 <div class="container justify-content-md-center">
                     <form class="form-signin" action="/login" method="POST">
@@ -17,22 +15,15 @@
                     </form>
                 </div>
             </div>
-
     @endsection
-
-   
     @section ('timeout')
-
         @if (count($errors) || $flash = session('message'))
-
         <script>
             window.setTimeout(function() {
                     $(".alert").hide(); 
             }, 4000);
         </script>
-
         @endif
-    
     @endsection
 
     

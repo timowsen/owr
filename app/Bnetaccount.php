@@ -17,29 +17,30 @@ class Bnetaccount extends Model
 
     public static function get_http_response_code($url) 
     {
-        $headers = get_headers($url);
+        $headers = @get_headers($url);
         return substr($headers[0], 9, 3);
     }
 
     public static function debugbnetapiData($accname = "") 
     {
-
-        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
+        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) 
+        {
             $apiurl = env('OW_API_URL', false);
             $apiport = env('OW_API_PORT', false);
         } else {
             $apiurl = 0;
             $apiport = 0;
         }
-
-        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) {
+        if(env('OW_API_URL', false) && env('OW_API_PORT', false)) 
+        {
             $apiurl = env('OW_API_URL', false);
             $apiport = env('OW_API_PORT', false);
         } else {
             $apiurl = 0;
             $apiport = 0;
         } 
-        if(empty($accname)) {
+        if(empty($accname)) 
+        {
             $battle = Bnetaccount::select('bnetaccount')->where('user_id', '=', Auth::id())->first();
             $battle = $battle['bnetaccount'];
             $cache = Bnetaccount::where('user_id', '=', Auth::id())->value('statscache');
@@ -47,7 +48,8 @@ class Bnetaccount extends Model
         } else {
             $battle = $accname;
         }
-        if(!empty($battle) && empty($cache)) {
+        if(!empty($battle) && empty($cache)) 
+        {
             $options  = array('http' => array('user_agent' => 'timowsen12345'));
             $context = stream_context_create($options);
             if($apiurl !== 0 && $apiport !== 0) {
@@ -59,9 +61,11 @@ class Bnetaccount extends Model
             } else {
                 return false;
             }
-        } elseif(!empty($cache)) {
+        } elseif(!empty($cache)) 
+        {
             return $cache;
-        } else {
+        } else 
+        {
             return false;
         }
             

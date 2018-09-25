@@ -1,7 +1,5 @@
 @extends ('layout')
-
     @section ('content')
-
         <!-- content -->
         <div class="container text-ow-white justify-content-md-center">
             <form class="form-horizontal" role="form" method="POST" action="/resetpassword">
@@ -57,8 +55,5 @@
                 </div>
             </form>
         </div>
-
         @include('../errors')
-
-
     @endsection

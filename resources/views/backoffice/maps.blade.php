@@ -1,12 +1,8 @@
 @extends('backoffice.admin')
-
-
     @section('type')
-
         <div class="userlist text-ow-white mt-1">
             <ul class="list-group text-center align-items-middle">
                 @foreach ($maps as $map)
-                
                     <li class="list-inline-item align-middle">
                         <div class="cardbo text-white mb-3">
                             <div class="card-body">
@@ -23,9 +19,7 @@
                             </div>
                         </div>      
                     </li>
-
                 @endforeach
             </ul>
         </div>
-        
     @endsection

@@ -1,6 +1,4 @@
 @extends('/layout')
-
-
     @section('content')
             <div class="container text-ow-white justify-content-md-center">
                 <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="/heroes">

@@ -67,7 +67,6 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
-
         $user = User::create([ 
             'name' => request('name'),
             'email' => request('email'),
@@ -76,7 +75,6 @@ class AuthController extends Controller
         ]);
         auth()->login($user);
         session()->flash('message', 'Successfully logged in!');
-        
         return redirect('/games');
     }
 
@@ -85,23 +83,15 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'password' => 'required|confirmed',
         ]);
-
         if ($validator->fails()) {
             return view('auth.resetpw')->withErrors($validator);
         }
-
         $id = $request->session()->pull('resetemail', 'default');
-
         if(!empty($id)) {
-
             User::where('id', $id)->update(['resetpw' => 0]);
-
             User::where('id', $id)->update(['password' => bcrypt(request('password'))]);
-
             $request->session()->flush();
-            
             session()->flash('message', 'Successfully changed Password!');
-            
             return redirect('/');
         }
     }
