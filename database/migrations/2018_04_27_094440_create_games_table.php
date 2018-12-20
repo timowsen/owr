@@ -14,25 +14,15 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-
             $table->increments('id');
-
             $table->integer('user_id')->unsigned()->index();
-
             $table->foreign('user_id')->references('id')->on('users');
-
             $table->integer('map_id')->unsigned()->index();
-
             $table->foreign('map_id')->references('id')->on('maps');
-
             $table->integer('win');
-
             $table->integer('rating');
-
             $table->integer('bobos');
-
             $table->unique(['user_id', 'map_id', 'win', 'rating', 'bobos']);
-
             $table->timestamps();
         });
     }

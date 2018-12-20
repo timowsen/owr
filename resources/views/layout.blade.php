@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,11 +12,11 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  </head>
-    <body class="bgo">  
-      @yield('content')  
-      @include('datafooter')
-      @include('footer')
-    </body>
-        @yield('timeout')
+</head>
+<body class="bgo">
+@yield('content')
+@include('datafooter')
+@include('footer')
+</body>
+@yield('timeout')
 </html>

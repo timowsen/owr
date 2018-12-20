@@ -27,14 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function bnetaccount() 
+    public function bnetaccount()
     {
         return $this->belongsTo(Bnetaccount::class);
     }
 
-    public function games() 
+    public function games()
     {
         return $this->hasMany(Game::class);
     }
-
 }

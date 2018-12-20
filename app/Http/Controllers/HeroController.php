@@ -4,37 +4,30 @@ namespace App\Http\Controllers;
 
 use App\hero;
 
+use Illuminate\Support\Facades\Storage;
+
 class HeroController extends Controller
 {
-    public function index() 
+    public function store()
     {
-        $heroes = Hero::all();
-        return view('heroes.index', compact('heroes'));
-    }
-
-    public function show(Hero $hero) 
-    {
-        return $hero;
-        return view('heroes.hero', compact('hero'));
-    }
-
-    public function create() 
-    {
-        return view('heroes.create');
-    }
-
-    public function store() {
         $this->validate(request(), [
             'name' => 'required',
-            'type' => 'required'
+            'type' => 'required|between:1,3',
+            'picture' => 'required|file'
         ]);
-        $path = request()->file('picture')->store('/public/images/Hero-Icons');
-        $filename = @array_pop(explode('/', $path));
+        $fileExtension = request()->file('picture')->getClientOriginalExtension();
+        $storagename = 'Icon'. '-' . request('name') . "." . $fileExtension;
+        //save file as hash with helper functions 
+        //$path = request()->file('picture')->store('/public/images/Hero-Icons');
+        //save file as filename with facade
+        //path, input, filename
+        Storage::putFileAs('/public/images/Hero-Icons',  request()->file('picture'), $storagename);
         Hero::create([
             'name' => request('name'),
             'type' => request('type'),
-            'picture' => "storage/images/Hero-Icons/".$filename
+            'picture' => "storage/images/Hero-Icons/" . $storagename
         ]);
-        return redirect('/heroes/create');
+        session()->flash('message', 'Hero successfully created!');
+        return redirect('/backoffice/heroes');
     }
 }

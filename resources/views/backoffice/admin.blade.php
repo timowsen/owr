@@ -40,8 +40,28 @@
                         </a>
                 </li>
                 @endif
+                @if(request()->path() == 'backoffice/heroes')
+                <li class="nav-item ml-1">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addHeroModal">
+                            ADD HERO
+                        </button>
+                </li>    
+                @endif
+                @if(request()->path() == 'backoffice/maps')
+                <li class="nav-item ml-1">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addMapModal">
+                            ADD MAP
+                        </button>
+                </li>    
+                @endif
             </ul>
         </nav>
+        @if(request()->path() == 'backoffice/heroes')
+            @include('heroes.createmodal')
+        @endif
+        @if(request()->path() == 'backoffice/maps')
+            @include('maps.createmodal')
+        @endif
         @include('games.flashmessage')
         @include('../errors')
         @yield('type')

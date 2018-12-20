@@ -8,13 +8,11 @@ use App\User;
 
 class SessionsController extends Controller
 {
-
-
-    public function create() 
+    public function create()
     {
-        if(!auth()->attempt(request(['email', 'password']))) {
+        if (!auth()->attempt(request(['email', 'password']))) {
             $userresetpw = User::where('email', request('email'))->where('resetpw', 1)->value('id');
-            if(!empty($userresetpw)) {
+            if (!empty($userresetpw)) {
                 session(['resetemail' => $userresetpw]);
                 return view('auth.resetpw');
             } else {
@@ -28,7 +26,7 @@ class SessionsController extends Controller
         }
     }
 
-    public function destroy() 
+    public function destroy()
     {
         auth()->logout();
         session()->flash('message', 'Successfully logged out!');

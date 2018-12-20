@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 class ImprintController extends Controller
 {
-    public function showimprint() {
+    public function showimprint()
+    {
         return view('imprint');
     }
 
-    public function showdataprotection() {
+    public function showdataprotection()
+    {
         return view('dataprotection');
     }
 }

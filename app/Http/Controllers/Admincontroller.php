@@ -18,45 +18,8 @@ use App\Game;
 
 class Admincontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show()
-    {   
+    {
         $users = User::all();
         $bnetaccount = Bnetaccount::where('user_id', '=', Auth::id())->get();
         return view('backoffice.users', compact('users', 'bnetaccount'));
@@ -74,26 +37,20 @@ class Admincontroller extends Controller
         return view('backoffice.maps', compact('maps'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edituserrole()
+    public function edituserrole($id)
     {
         $this->validate(request(), [
             'role' => 'required|between:0,1'
         ]);
-        $id = request('changerole');
+        $userid = $id;
         $role = request('role');
-        User::find($id)->update(['admin' => $role]);
+        User::find($userid)->update(['admin' => $role]);
         session()->flash('message', 'Role of User changed successfully');
         return redirect('/backoffice');
     }
 
     public function resetuserpassword()
-    {   
+    {
         $this->validate(request(), [
             'resetpw' => 'required'
         ]);
@@ -103,32 +60,13 @@ class Admincontroller extends Controller
         return redirect('/backoffice');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroyhero()
-    {   
+    {
         $hero_id = request('delete');
-
         $heroes = Game::whereHas('heroes', function ($q) use ($hero_id) {
             $q->where('id', $hero_id);
         })->count();
-        if($heroes > 0) {
+        if ($heroes > 0) {
             session()->flash('message', 'Hero can´t be deleted, it is still in use!');
             return redirect('/backoffice/heroes');
         } else {
@@ -136,12 +74,12 @@ class Admincontroller extends Controller
             session()->flash('message', 'Hero deleted successfully');
             return redirect('/backoffice/heroes');
         }
-        
+
     }
 
     public function destroymap()
     {
-        if(Game::where('map_id', request('delete'))->count() > 0) {
+        if (Game::where('map_id', request('delete'))->count() > 0) {
             session()->flash('message', 'Map can´t be deleted, it is still in use!');
             return redirect('/backoffice/maps');
         } else {

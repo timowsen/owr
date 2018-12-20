@@ -15,13 +15,9 @@ class CreateMapsTable extends Migration
     {
         Schema::create('maps', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('name');
-
             $table->integer('type');
-
             $table->string('picture');
-
             $table->timestamps();
         });
     }

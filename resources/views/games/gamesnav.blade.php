@@ -7,7 +7,7 @@
             </form>
             </li>
             <li class="nav-item ml-1">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addgameModal">
                     ADD GAME
                 </button>
             </li>

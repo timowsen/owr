@@ -19,7 +19,7 @@ class AuthAdmin
     {
         if (!Auth::check()) 
             return redirect('/');
-        if(!Auth::user()->admin)
+        if(!Auth::user()->admin === 1)
             return redirect('/games');
         return $next($request);
     }

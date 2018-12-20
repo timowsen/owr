@@ -130,7 +130,7 @@ class MapSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
-        
+
         DB::table('maps')->insert([
             'type' => 4,
             'name' => 'Lijiang-Tower',
@@ -146,7 +146,7 @@ class MapSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
-        
+
 
         DB::table('maps')->insert([
             'type' => 4,

@@ -14,30 +14,17 @@ class Bnetaccounts extends Migration
     public function up()
     {
         Schema::create('bnetaccounts', function (Blueprint $table) {
-            
             $table->increments('id');
-
             $table->integer('user_id')->unsigned()->index();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')
-            ->onUpdate('cascade');
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('bnetaccount');
-
             $table->integer('rating')->nullable();
-
             $table->string('tier')->nullable();
-
             $table->string('endorsementlevel')->nullable();
-
             $table->float('winrate', 4, 2)->nullable();
-
             $table->string('avatar')->nullable();
-
             $table->longText('statscache')->nullable();
-            
             $table->timestamps();
-        
         });
     }
 

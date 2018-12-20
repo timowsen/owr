@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
-
 use App\User;
 
 use Validator;
@@ -16,39 +14,38 @@ class AuthController extends Controller
     {
         $this->middleware(function ($request, $next) {
             $this->user = User::where('admin', '=', 1)->get()->first();
-            if(empty($this->user)) {
+            if (empty($this->user)) {
                 $request->attributes->add(['forceRegisterAdmin' => 'true']);
             }
             return $next($request);
         });
     }
 
-    public function showloginform(Request $request) 
-    {   
+    public function showloginform(Request $request)
+    {
         $forceregister = $request->get('forceRegisterAdmin');
-        if($forceregister == true) {
+        if ($forceregister == true) {
             return view('auth.registeradmin');
-        } elseif(Auth::check()) {
+        } elseif (auth()->check()) {
             return redirect('/games');
         } else {
             return view('auth.login');
         }
     }
 
-    public function showregisterform() 
+    public function showregisterform()
     {
         return view('auth.register');
     }
 
-    public function storeadmin() 
+    public function storeadmin()
     {
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
-
-        $user = User::create([ 
+        $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'admin' => 1,
@@ -56,18 +53,17 @@ class AuthController extends Controller
         ]);
         auth()->login($user);
         session()->flash('message', 'Successfully logged in!');
-        
         return redirect('/games');
     }
 
-    public function store() 
+    public function store()
     {
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
-        $user = User::create([ 
+        $user = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'admin' => 0,
@@ -79,7 +75,7 @@ class AuthController extends Controller
     }
 
     public function resetpassword(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
             'password' => 'required|confirmed',
         ]);
@@ -87,7 +83,7 @@ class AuthController extends Controller
             return view('auth.resetpw')->withErrors($validator);
         }
         $id = $request->session()->pull('resetemail', 'default');
-        if(!empty($id)) {
+        if (!empty($id)) {
             User::where('id', $id)->update(['resetpw' => 0]);
             User::where('id', $id)->update(['password' => bcrypt(request('password'))]);
             $request->session()->flush();

@@ -4,41 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Map;
 
+use Illuminate\Support\Facades\Storage;
+
 class MapController extends Controller
 {
-
-    public function index() 
+    public function store()
     {
-        $maps = Map::all();
-        return view('maps.index', compact('maps'));
-    }
-
-
-    public function show(Map $map) 
-    {
-        return view('maps.show', compact('map'));
-    }
-
-
-    public function create() 
-    {
-        return view('maps.create');
-    }
-
-    public function store() 
-    {
-        $this->validate(request() , [
-            'type' => 'required',
+        $this->validate(request(), [
             'name' => 'required',
-            'picture' => 'required'
+            'type' => 'required|between:1,4',
+            'picture' => 'required|file'
         ]);
-        $path = request()->file('picture')->store('/public/images/Map-Icons');
-        $filename = @array_pop(explode('/', $path));
+        $fileextension = request()->file('picture')->getClientOriginalExtension();
+        $storagename = 'Icon'. '-' . request('name') . "." . $fileextension;
+        Storage::putFileAs('/public/images/Map-Icons',  request()->file('picture'), $storagename);
         Map::create([
-            'type' => request('type'),
             'name' => request('name'),
-            'picture' => "storage/images/Map-Icons/".$filename
+            'type' => request('type'),
+            'picture' => "storage/images/Map-Icons/" . $storagename
         ]);
-        return redirect('/maps/create');
+        session()->flash('message', 'Map sucessfully created!');
+        return redirect('/backoffice/maps');
     }
 }

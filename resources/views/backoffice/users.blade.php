@@ -11,14 +11,14 @@
                                     </p>
                                     <div class="input-group justify-content-center">
                                         <form action="/backoffice/users" method="POST" class="inline-group">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" name="delete" value="{{ $user->id }}" class="btn btn-outline-danger" onClick="return confirm('Really delete this user?')">DELETE USER</button>
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" name="delete" value="{{ $user->id }}" class="btn btn-outline-danger" onClick="return confirm('Really delete this user?')">DELETE USER</button>
                                         </form>
                                         &nbsp;
                                         <form action="/backoffice/users/resetpw" method="POST" class="inline-group">
-                                        @csrf
-                                        <button type="submit" name="resetpw" value="{{ $user->id }}" class="btn btn-outline-primary">RESET PASSWORD</button>
+                                            @csrf
+                                            <button type="submit" name="resetpw" value="{{ $user->id }}" class="btn btn-outline-primary">RESET PASSWORD</button>
                                         </form>
                                         &nbsp;
                                         <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#usermodal{{ $user->id }}">
@@ -33,7 +33,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <form action="/backoffice/changeuserrole" method="POST">
+                                    <form action="/backoffice/changeuserrole/{{ $user->id }}" method="POST">
                                         @csrf
                                         <h1 class="text-center">Change Role for {{ $user->name }}</h1>
                                               <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -46,7 +46,7 @@
                                                     </label>
                                                 </div>
                                         <div class="modal-footer">
-                                            <button type="submit" value="{{ $user->id }}" name="changerole" class="btn btn-primary" onClick="confirm('Really change this users role?')">Change Role</button>
+                                            <button type="submit" value="1" name="changerole" class="btn btn-primary" onClick="confirm('Really change this users role?')">Change Role</button>
                                             <button type="button" class="btn btn-secondary btn-danger" data-dismiss="modal">Close</button>
                                         </div>
                                     </form>

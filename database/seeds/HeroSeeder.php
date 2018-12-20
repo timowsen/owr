@@ -11,9 +11,6 @@ class HeroSeeder extends Seeder
      */
     public function run()
     {
-
-
-
         DB::table('heroes')->insert([
             'type' => 1,
             'name' => 'Reinhardt',
@@ -182,7 +179,7 @@ class HeroSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
-  
+
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Ana',
@@ -222,7 +219,7 @@ class HeroSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
-        
+
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Moira',
@@ -230,7 +227,7 @@ class HeroSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
-        
+
         DB::table('heroes')->insert([
             'type' => 3,
             'name' => 'Brigitte',
