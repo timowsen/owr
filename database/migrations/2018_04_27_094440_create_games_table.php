@@ -19,6 +19,8 @@ class CreateGamesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('map_id')->unsigned()->index();
             $table->foreign('map_id')->references('id')->on('maps');
+            $table->integer('season_id')->unsigned()->index();
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->integer('win');
             $table->integer('rating');
             $table->integer('bobos');

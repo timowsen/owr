@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(HeroSeeder::class);
         $this->call(MapSeeder::class);
+        $this->call(SeasonSeeder::class);
     }
 }

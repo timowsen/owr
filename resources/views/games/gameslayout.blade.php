@@ -34,7 +34,7 @@
                                          class="endorsement text-ow-white" xml:space="preserve">
                                             <g opacity="0.7" enable-background="new    ">
                                                 <image overflow="visible" opacity="0.75" width="211" height="199"
-                                                       xlink:href="http://127.0.0.1:8000/storage/images/svg/ED575D7C.png"
+                                                       xlink:href="{{ url('') }}/storage/images/svg/ED575D7C.png"
                                                        transform="matrix(1 0 0 1 -5 -5)">
                                                 </image>
                                                 <g>

@@ -32,12 +32,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', 'SessionsController@destroy');
     //Game Routes
     Route::get('/games', 'GameController@showgames');
+    Route::get('/games/season/{id}', 'GameController@showgames');
     Route::post('/games', 'GameController@store');
     Route::delete('/games', 'GameController@delete');
     //Bnetaccount & Api Routes
     Route::post('/refresh', 'BattlenetController@refresh');
     Route::post('/bnetaccount', 'BattlenetController@store');
-
 });
 
 Route::middleware(['auth', 'authAdmin'])->group(function () {
@@ -45,6 +45,7 @@ Route::middleware(['auth', 'authAdmin'])->group(function () {
     Route::get('/backoffice', 'AdminController@show');
     Route::get('/backoffice/heroes', 'AdminController@showheroes');
     Route::get('/backoffice/maps', 'AdminController@showmaps');
+    Route::get('/backoffice/seasons', 'AdminController@showseasons');
     Route::post('backoffice/changeuserrole/{id}', 'Admincontroller@edituserrole');
     Route::delete('backoffice/heroes', 'AdminController@destroyhero');
     Route::delete('backoffice/maps', 'AdminController@destroymap');

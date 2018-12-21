@@ -110,6 +110,10 @@ html {
     z-index: 1030;
     max-height: 5%;
   }
+
+  .marginseasondropdown {
+    margin-left: 0rem;
+  }
 }
 
 @media (min-width: 992px) {
@@ -129,6 +133,10 @@ html {
     position: fixed;
     bottom: 0;
     left: 0;
+  }
+
+  .marginseasondropdown {
+    margin-left: 15rem;
   }
 }
 
@@ -603,5 +611,20 @@ button.list-group-item-danger.active {
 
 .w-15 {
   width: 15% !important;
+}
+
+.seasondropdown {
+  position: absolute;
+  -webkit-transform: translate3d(0px, 31px, 0px);
+          transform: translate3d(0px, 31px, 0px);
+  top: 0px;
+  left: 0px;
+  will-change: transform;
+  min-width: 0;
+}
+
+.seasondropdownbutton {
+  height: 3rem;
+  width: 3rem;
 }
 

@@ -16,6 +16,8 @@ use App\Map;
 
 use App\Game;
 
+use App\Season;
+
 class Admincontroller extends Controller
 {
     public function show()
@@ -35,6 +37,12 @@ class Admincontroller extends Controller
     {
         $maps = Map::all();
         return view('backoffice.maps', compact('maps'));
+    }
+
+    public function showseasons()
+    {
+        $seasons = Season::all();
+        return view('backoffice.seasons', compact('seasons'));
     }
 
     public function edituserrole($id)

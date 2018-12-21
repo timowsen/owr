@@ -14,6 +14,8 @@ use App\User;
 
 use App\Bnetaccount;
 
+use App\Season;
+
 class GameController extends Controller
 {
 
@@ -23,13 +25,16 @@ class GameController extends Controller
     }
 
 
-    public function showgames()
+    public function showgames($id = 13)
     {
-        $games = Game::where('user_id', '=', Auth::id())->with('heroes')->get();
+        $seasonid = $id;
+        $seasonbutton = Season::where('id', '=', $seasonid)->first();
+        $games = Game::where('user_id', '=', Auth::id())->where('season_id', '=', $seasonid)->with('heroes')->get();
         $bnetaccount = Bnetaccount::where('user_id', '=', Auth::id())->get();
         $heroes = Hero::orderBy('type')->get();
         $maps = Map::orderBy('type')->get();
         $users = User::where('id', '=', Auth::id())->get();
+        $seasons = Season::orderBy('seasonindex')->get();
         $apiblob = $bnetaccount->pluck('statscache');
         if (!empty($apiblob)) {
             foreach ($apiblob as $blob) {
@@ -60,13 +65,14 @@ class GameController extends Controller
                 $lastrating = $game['rating'];
             }
         }
-        return view('games.gameslayout', compact('games', 'heroes', 'maps', 'difference', 'bnetaccount', 'users', 'comptime', 'qptime'));
+        return view('games.gameslayout', compact('games', 'heroes', 'maps', 'difference', 'bnetaccount', 'users', 'comptime', 'qptime', 'seasons', 'seasonbutton'));
     }
 
 
 
     public function store()
     {
+        $maxseason = Season::max('seasonindex');
         $this->validate(request(), [
             'rating' => 'required|numeric|between:1000,5500',
             'win' => 'required',
@@ -78,7 +84,8 @@ class GameController extends Controller
             'win' => request('win'),
             'bobos' => (!empty(request('bobos')) ? (request('bobos')) : 0),
             'map_id' => request('mapchoice'),
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
+            'season_id' => $maxseason
         ];
         // check not yet exists
         $game = @Game::where([
