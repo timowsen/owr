@@ -11,9 +11,9 @@
                                     </p>
                                     <div class="input-group justify-content-center">
                                         <form action="/backoffice/users" method="POST" class="inline-group">
-                                            @csrf
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" name="delete" value="{{ $user->id }}" class="btn btn-outline-danger" onClick="return confirm('Really delete this user?')">DELETE USER</button>
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" name="delete" value="{{ $user->id }}" class="btn btn-outline-danger" onClick="return confirm('Really delete this user?')">DELETE USER</button>
                                         </form>
                                         &nbsp;
                                         <form action="/backoffice/users/resetpw" method="POST" class="inline-group">
